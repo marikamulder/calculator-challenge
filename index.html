@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://fonts.google.com/specimen/League+Spartan">
+  <title>Frontend Mentor | Calculator app</title>
+
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="calculator">
+
+      <div class="theme-switch">
+        <div class="theme-title">
+          <p>THEME</p>
+        </div>
+
+        <div class="theme-num">
+          <p >1 2 3</p>
+        </div>
+        
+        <div class="tri-state-toggle">
+          <input class="button" type="radio" name="toggle" id="theme-one" />
+          <input class="button" type="radio" name="toggle" id="theme-two" />
+          <input class="button" type="radio" name="toggle" id="theme-three" />
+        </div>
+      </div>
+
+      <div id="calcResults">
+        <p id="numResults" class="results">0</p>
+      </div>
+
+      <div class="grid-container">
+        <p id="button-7" onclick="click7();" class="grid-item">7</p>
+        <p id="button-8" onclick="click8();" class="grid-item">8</p>
+        <p id="button-9" onclick="click9();" class="grid-item">9</p>
+        <p id="button-del" onclick="clickDelete();" class="grid-item">DEL</p>
+        <p id="button-4" onclick="click4();" class="grid-item">4</p>
+        <p id="button-5" onclick="click5();" class="grid-item">5</p>
+        <p id="button-6" onclick="click6();" class="grid-item">6</p>
+        <p id="button_+" onclick="clickPlus();" class="grid-item">+</p>
+        <p id="button-1" onclick="click1();" class="grid-item">1</p>
+        <p id="button-2" onclick="click2();" class="grid-item">2</p>
+        <p id="button-3" onclick="click3();" class="grid-item">3</p>
+        <p id="button_-" onclick="clickMinus();" class="grid-item">-</p>
+        <p id="button_." onclick="clickPeriod();" class="grid-item">.</p>
+        <p id="button-0" onclick="click0();" class="grid-item">0</p>
+        <p id="button_/" onclick="clickSlash();" class="grid-item">/</p>
+        <p id="button_x" onclick="clickTimes();" class="grid-item">x</p>
+      </div>
+      
+      <div class="grid-container-bottom">
+        <p id="button_reset" onclick="clickReset();"  class="grid-item">RESET</p>
+        <p id="button_equal" id="button_=" onclick="clickEquals();"  class="grid-item">=</p>
+      </div>
+
+    </div>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Marika Mulder</a>.
+    </div>
+  </div>
+  <!-- JavaScript -->
+  <script>
+
+    const setTheme = theme => document.documentElement.className = theme;
+
+    // toggle switch javascript
+    var buttons = document.getElementsByClassName("button");
+    var arr = [...buttons];
+
+    arr.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        element.style.opacity = "1";
+
+        if (index == 0) {
+          setTheme('theme1');
+        } else if (index == 1) {
+          setTheme('theme2');
+        } else {
+          setTheme('theme3');
+        } 
+        
+        arr
+          .filter(function (item) {
+            return item != element;
+          })
+          .forEach((item) => {
+            item.style.opacity = "0";
+          });
+      });
+    });
+
+    // calculator javascript
+    var firstNum = 0;
+    var operator = '';
+    var secondNum = 0;
+
+    function click0() {
+
+      var chosenButton = document.getElementById("button-0").innerHTML;
+      var output = document.getElementById("numResults").innerHTML;
+
+      var calculate = document.getElementById("numResults").innerHTML;
+      secondNum = calculate.substring(calculate.lastIndexOf(operator) + 2);
+
+      if (output != 0){
+        output += chosenButton;
+
+      } else if (output.includes(".")) {
+        output += chosenButton;
+        
+      } else {
+        output = chosenButton;
+      }
+
+      document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click1() {
+
+    var chosenButton = document.getElementById("button-1").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click2() {
+
+    var chosenButton = document.getElementById("button-2").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click3() {
+
+    var chosenButton = document.getElementById("button-3").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click4() {
+
+    var chosenButton = document.getElementById("button-4").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click5() {
+
+    var chosenButton = document.getElementById("button-5").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    }else if (output.includes(".")) {
+      output += chosenButton;
+    }  else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click6() {
+
+    var chosenButton = document.getElementById("button-6").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click7() {
+
+    var chosenButton = document.getElementById("button-7").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click8() {
+
+    var chosenButton = document.getElementById("button-8").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function click9() {
+
+    var chosenButton = document.getElementById("button-9").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    if (output != 0){
+      output += chosenButton;
+    } else if (output.includes(".")) {
+      output += chosenButton;
+    } else {
+      output = chosenButton;
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+    
+    function clickPlus() {
+
+    var chosenButton = document.getElementById("button_+").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    firstNum = output;
+
+    if (operator == "") {
+      if (output != 0){
+        output += " " + chosenButton + " ";
+      } else {
+        output = chosenButton;
+      }
+
+      operator = '+';
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+
+    }
+
+    function clickMinus() {
+
+    var chosenButton = document.getElementById("button_-").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+    
+    firstNum = output;
+    
+    if (operator == "") {
+      if (output != 0){
+        output += " " + chosenButton + " ";
+      } else {
+        output = chosenButton;
+      }
+      
+      operator = '-';
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function clickSlash() {
+
+    var chosenButton = document.getElementById("button_/").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    firstNum = output;
+    
+    if (operator == "") {
+      if (output != 0){
+        output += " " + chosenButton + " ";
+      } else {
+        output = chosenButton;
+      }
+
+      operator = '/';
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function clickPeriod() {
+
+    var chosenButton = document.getElementById("button_.").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    var calculate = document.getElementById("numResults").innerHTML;
+    secondNum = calculate.substring(calculate.lastIndexOf(operator) + 2);
+
+    if (operator == "") {
+      if (output.includes(".")) {
+        output = output;
+      } else {
+        output += chosenButton;
+      }
+    } else {
+      if (secondNum.includes(".")) {
+        output = output;
+      } else if (secondNum == 0) {
+        output += 0 + chosenButton;
+      } else {
+        output += chosenButton;
+      }
+    }
+
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function clickTimes() {
+
+    var chosenButton = document.getElementById("button_x").innerHTML;
+
+    var output = document.getElementById("numResults").innerHTML;
+
+    firstNum = output;
+
+    if (operator == "") {
+      if (output != 0){
+        output += " " + chosenButton + " ";
+      } else {
+        output = chosenButton;
+      }
+
+      operator = 'x';
+    }
+    document.getElementById("numResults").innerHTML = output;
+    }
+
+    function clickDelete() {
+      var results = document.getElementById("numResults").innerHTML;
+
+      if (results.charAt(results.length -1) == " ") {
+        
+        document.getElementById("numResults").innerHTML = results.slice(0, -3);
+        results = results.slice(0, -3);
+
+        if (!results.includes(operator)) {
+          operator = "";
+
+        }
+
+      } else {
+
+        document.getElementById("numResults").innerHTML = results.slice(0, -1);
+        results = results.slice(0, -1);
+
+        if (!results.includes(operator)) {
+          operator = "";
+
+        }
+
+      }
+
+      if (results == "") {
+        document.getElementById("numResults").innerHTML = 0;
+      }
+    }
+
+    function clickReset() {
+      document.getElementById("numResults").innerHTML = 0;
+
+      firstNum = 0;
+      secondNum = 0;
+      operator = "";
+    }
+
+    function clickEquals() {
+      var calculate = document.getElementById("numResults").innerHTML;
+
+      secondNum = calculate.substring(calculate.lastIndexOf(operator) + 2);
+
+      firstNum = parseFloat(firstNum);
+      secondNum = parseFloat(secondNum); 
+
+      if (operator == '+') {
+        
+        var output = firstNum + secondNum;
+        document.getElementById("numResults").innerHTML = Math.round(output * 100) / 100;
+        operator = '';
+
+      } else if (operator == "-") {
+        
+        var output = firstNum - secondNum;
+        document.getElementById("numResults").innerHTML = Math.round(output * 100) / 100;
+        operator = '';
+
+      } else if (operator == "x") {
+        
+        var output = firstNum * secondNum;
+        document.getElementById("numResults").innerHTML = Math.round(output * 100) / 100;
+        operator = '';
+        
+      } else if (operator == "/") {
+        
+        var output = firstNum / secondNum;
+        document.getElementById("numResults").innerHTML = Math.round(output * 100) / 100;
+        operator = '';
+
+      } else {
+
+        document.getElementById("numResults").innerHTML = calculate;
+
+      }
+      
+    }
+
+  </script>
+</body>
+</html>

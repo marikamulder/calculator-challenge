@@ -1,0 +1,209 @@
+
+:root,
+:root.theme1 {
+    --bg-color: hsl(222, 26%, 31%);
+    --calc-bg-color: hsl(223, 31%, 20%);
+    --toggle-color: rgb(194, 2, 2);
+    --result-text-color: #fff;
+
+    --key-color: rgba(255, 255, 255, 0.782);
+    --key-shadow-color: hsla(224, 20%, 78%, 0.86);
+    --key-hover-color: rgb(255, 255, 255);
+    --key-text-color: hsl(221, 14%, 31%);
+
+    --equal-key-color: hsl(6, 63%, 50%);
+    --equal-key-shadow-color: hsl(6, 70%, 34%);
+    --equal-key-hover-color: hsla(6, 100%, 64%, 0.949);
+    --equal-text-color: #fff;
+
+    --del-reset-key-color: hsl(225, 21%, 49%);
+    --del-reset-key-shadow-color: hsl(224, 28%, 35%);
+    --del-reset-key-hover: hsl(223, 69%, 73%);
+    --del-reset-text-color: #fff;
+}
+
+:root.theme2 {
+    --bg-color: hsl(0, 0%, 90%);
+    --calc-bg-color: hsl(0, 5%, 81%);
+    --toggle-color: hsl(25, 98%, 40%);
+    --result-text-color: rgb(0, 0, 0);
+
+    --key-color: hsl(45, 7%, 89%);
+    --key-shadow-color: hsl(35, 11%, 61%);
+    --key-hover-color: rgb(255, 255, 255);
+    --key-text-color: hsl(60, 10%, 19%);
+
+    --equal-key-color: hsl(25, 98%, 40%);
+    --equal-key-shadow-color: hsl(25, 99%, 27%);
+    --equal-key-hover-color: hsl(25, 93%, 50%);
+    --equal-text-color: #fff;
+
+    --del-reset-key-color: hsl(185, 42%, 37%);
+    --del-reset-key-shadow-color: hsl(185, 58%, 25%);
+    --del-reset-key-hover: hsla(185, 43%, 52%, 0.851);
+    --del-reset-text-color: #fff;
+}
+
+:root.theme3 {
+    --bg-color: hsl(268, 75%, 9%);
+    --calc-bg-color: hsl(268, 71%, 12%);
+    --toggle-color: hsl(176, 100%, 44%);
+    --result-text-color: hsl(52, 100%, 62%);
+
+    --key-color: hsl(268, 47%, 21%);
+    --key-shadow-color: hsl(290, 70%, 36%);
+    --key-hover-color: hsl(268, 44%, 37%);
+    --key-text-color: hsl(52, 100%, 62%);
+
+    --equal-key-color: hsl(176, 100%, 44%);
+    --equal-key-shadow-color: hsl(177, 92%, 70%);
+    --equal-key-hover-color: hsl(176, 93%, 78%);
+    --equal-text-color: hsl(198, 20%, 13%);
+
+    --del-reset-key-color: hsl(268, 47%, 21%);
+    --del-reset-key-shadow-color: hsl(290, 70%, 36%);
+    --del-reset-key-hover: hsl(268, 50%, 53%);
+    --del-reset-text-color: #fff;
+}
+
+/* body will cover the entire page */
+body {
+    font-family: "League Spartan", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    background-color: var(--bg-color);
+}
+
+.theme-num {
+    margin-left: 369px;
+}
+
+.theme-num p {
+    margin: 0px;
+    letter-spacing: 5px;
+    color: var(--result-text-color);
+}
+
+.theme-title {
+    float: left;
+    margin-left: 270px;
+}
+
+.theme-title p {
+    margin-top: 46px;
+    color: var(--result-text-color);
+    font-size: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator {
+    margin: 30px 450px 20px 450px;
+    display: flex;
+    flex-direction: column;
+    width: 466px;
+}
+
+#calcResults {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.results {
+    background-color: var(--calc-bg-color);
+    border-radius: 15px;
+    color: var(--result-text-color);
+    text-align: right;
+    padding: 20px;
+    margin: 0;
+}
+
+/* make a grid */
+.grid-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 15px 15px 0 0;
+    padding: 10px 10px 0 10px;
+    background-color: var(--calc-bg-color);
+}
+
+.grid-container-bottom {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0 0 15px 15px;
+    padding: 0 10px 10px 10px;
+    background-color: var(--calc-bg-color);
+}
+
+/* individual items in the grid */
+.grid-item {
+    flex: 1 1 40px;
+    background-color: var(--key-color);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    line-height: 1.6;
+    box-shadow: 0px 5px var(--key-shadow-color);
+    color: var(--key-text-color);
+}
+
+#button-del, #button_reset {
+    box-shadow: 0px 5px var(--del-reset-key-shadow-color); 
+    background-color: var(--del-reset-key-color);
+    color: var(--del-reset-text-color);
+}
+
+#button_equal {
+    box-shadow: 0px 5px var(--equal-key-shadow-color); 
+    background-color: var(--equal-key-color);
+    color: var(--equal-text-color);
+}
+
+.grid-item:hover {
+    background-color: var(--key-hover-color);
+}
+
+#button-del:hover, #button_reset:hover {
+    background-color: var(--del-reset-key-hover);
+}
+
+#button_equal:hover {
+    background-color: var(--equal-key-hover-color);
+}
+
+input {
+    height: 30px;
+    width: 30px;
+    appearance: none;
+    background-color: var(--toggle-color);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+.tri-state-toggle {
+    display: flex;
+    justify-content: center;
+    border: 3px solid var(--calc-bg-color);
+    background-color: var(--calc-bg-color);
+    border-radius: 50px;
+    margin-left: 355px;
+}
+
+#theme-one {
+    opacity: 1;
+}
+
+/* making the visuals look different when on desktop 
+@media screen and (min-width: 375px) {
+
+}*/
